@@ -153,7 +153,7 @@ df.columns
 
 """DATA CORRELATION"""
 
-df = df.dropna('columns')# drop columns with NaN
+df = df.dropna()# drop columns with NaN
 
 df = df[[col for col in df if df[col].nunique() > 1]]# keep columns where there are more than 1 unique values
 

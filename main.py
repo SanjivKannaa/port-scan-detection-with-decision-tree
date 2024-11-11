@@ -1,4 +1,5 @@
 from capture import capture_packets
+from ml import detect
 from twilio.rest import Client
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -21,7 +22,7 @@ try:
     print("TWILLIO CONNECTION SUCCESSFULLY")
 except:
     print("TWILLIO CONNECTION FAILED")
-    exit()
+    # exit()
 
 
 def send_email(to_email, subject, content):
@@ -44,8 +45,12 @@ def send_email(to_email, subject, content):
         print(f"Error sending email: {e}")
 
 while True:
-    fname = capture()
-    post_process = process(fname)
+    print("starting new capture")
+    fname = capture_packets()
+    # for i in fname:
+    #     post_process = detect(extract_features(i, fname))
+    post_process = detect(fname)
+    exit()
     if post_process['status'] == 1:
         print("port scan detected!")
         current_time = datetime.now()

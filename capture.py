@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 def capture_packets():
-    capture_duration = 10 #5 * 60  # 5 minutes
+    capture_duration = 5 #5 * 60  # 5 minutes
     start_time = time.time()
     packets = sniff(filter="tcp or udp", timeout=capture_duration)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
