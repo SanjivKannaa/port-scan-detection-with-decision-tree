@@ -115,7 +115,12 @@ def train():
 # Function to parse PCAP and detect attacks
 def detect(packet):
     if not packet:
-        return
+        return {
+            'time': 0,  # 'time' is assumed to be 'duration' in the input
+            'fromip': "None",  # Ensure the 'src_ip' is part of the input
+            'toip': "None",    # Ensure the 'dst_ip' is part of the input
+            'attacktype': "normal"
+        }
     # try:
     # print(packet[IP])
     # except:
